@@ -1,5 +1,5 @@
 === Contact Form Clean and Simple ===
-Contributors: megnicholas
+Contributors: megnicholas, jaywilliams
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AKQM4KSBQ4H66
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -8,9 +8,11 @@ Requires at least: 3.3
 Tested up to: 3.8.2
 Stable tag: 4.3.3
 
-A clean and simple AJAX contact form with Google reCAPTCHA, Twitter Bootstrap markup and Akismet spam filtering.
+**This fork adds basic support for telephone numbers.** A clean and simple AJAX contact form with Google reCAPTCHA, Twitter Bootstrap markup and Akismet spam filtering.
 
 == Description ==
+**This fork adds basic support for telephone numbers.**
+
 A clean and simple AJAX contact form with Google reCAPTCHA, Twitter Bootstrap markup and Akismet spam filtering.
 
 *   **Clean**: all user inputs are stripped in order to avoid cross-site scripting (XSS) vulnerabilities. 
