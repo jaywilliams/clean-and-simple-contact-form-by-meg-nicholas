@@ -1,0 +1,28 @@
+{
+  "name": "jaywilliams/clean-and-simple-contact-form-by-meg-nicholas",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0+",
+  "description": "A clean and simple AJAX contact form with Google reCAPTCHA, Twitter Bootstrap markup and Akismet spam filtering.",
+  "homepage": "https://github.com/jaywilliams/clean-and-simple-contact-form-by-meg-nicholas",
+  "authors": [
+    {
+      "name": "Meg Nicholas",
+      "homepage": "http://www.megnicholas.co.uk"
+    },
+    {
+      "name": "Jay Williams",
+      "email": "jay@myd3.com",
+      "homepage": "https://github.com/jaywilliams"
+    }
+  ],
+  "keywords": [
+    "wordpress"
+  ],
+  "support": {
+    "forum": "http://wordpress.org/support/plugin/clean-and-simple-contact-form-by-meg-nicholas"
+  },
+  "require": {
+    "php": ">=5.3.0",
+    "composer/installers": "~1.0"
+  }
+}
