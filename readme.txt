@@ -5,8 +5,8 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: simple, contact, form, contact button, contact form, contact form plugin, akismet, contacts, contacts form plugin, contact me, feedback form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
-Tested up to: 3.8.2
-Stable tag: 4.3.3
+Tested up to: 4.0
+Stable tag: 4.4.1
 
 **This fork adds basic support for telephone numbers.** A clean and simple AJAX contact form with Google reCAPTCHA, Twitter Bootstrap markup and Akismet spam filtering.
 
@@ -133,6 +133,8 @@ Here is a list of things that you can change
 
 *   **!NEW! Override 'From' Address**: If you tick this and then fill in the 'From Address:' box then all email will be sent from the given address NOT from the email address given by the form filler.
 
+*   **!NEW! Option to allow enquiry to email themselves a copy of the message.
+
 == Screenshots ==
 1. Contact Form With reCAPTCHA
 2. Contact Form Without reCAPTCHA
@@ -203,6 +205,11 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
+= 4.4.0 =
+* Fixed XSS issue
+= 4.4.1 =
+* Add option for enquiry to email themselves a copy of the message
+* Update to Polish translation thanks to Radosław “Robaczek” Rak
 = 4.3.4 =
 * Added the wordpress page of contact form to the email
 * Removed link in main contact form view
@@ -313,8 +320,12 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.4.1 =
+Fixed XSS issue
+= 4.4.0 =
+Added option for enquiry to email themselves a copy of the message plus Polish translation updated
 = 4.3.4 =
-Added the wordpress page of contact form to the email, remove link from main view
+Email now includes page url of contact form, removed link in main contact form view
 = 4.3.3 =
 Hebrew Language added, name field moved to top of form, added 'reply-to'
 = 4.3.2 =
