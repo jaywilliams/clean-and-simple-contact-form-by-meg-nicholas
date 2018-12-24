@@ -107,6 +107,20 @@
             </div>
             <?php } ?>
 
+            <!-- url -->
+            <div class="control-group form-group hidden">
+                <label for="cscf_url"><?php _e('URL:','cleanandsimple');?></label>
+                <div class="<?php echo cscf_PluginSettings::InputIcons() ? "input-group" : ""; ?>">
+                    <input class="form-control input-xlarge"
+                       data-rule-required="false"
+                       data-msg-required="<?php _e('Please enter your web address.','cleanandsimple');?>"
+                       type="text" id="cscf_url" name="cscf[url]"
+                       value="<?php echo esc_attr($contact->Url); ?>"
+                       placeholder="<?php _e('Your Website','cleanandsimple');?>"
+                    />
+                </div>
+            </div>
+
 
             <!-- message -->
             <div class="control-group form-group<?php if (isset($contact->Errors['message'])) echo ' error has-error'; ?>">

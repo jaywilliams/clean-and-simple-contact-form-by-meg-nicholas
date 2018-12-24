@@ -8,6 +8,7 @@ class cscf_Contact
 {
     var $Name;
     var $Phone;
+    var $Url;
     var $Email;
     var $ConfirmEmail;
     var $Message;
@@ -33,6 +34,7 @@ class cscf_Contact
             $this->Name = filter_var($cscf['name'], FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
             $this->Phone = filter_var($cscf['phone'], FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
             $this->Email = filter_var($cscf['email'], FILTER_SANITIZE_EMAIL);
+            $this->Url   = filter_var($cscf['url'], FILTER_SANITIZE_STRING);
 
             if (isset($cscf['confirm-email'])) {
                 $this->ConfirmEmail = filter_var($cscf['confirm-email'], FILTER_SANITIZE_EMAIL);
@@ -137,7 +139,13 @@ class cscf_Contact
         $message .= "Page URL: " . get_permalink($this->PostID) . "\n\n";
         $message .= "Message:\n\n" . $this->Message;
 
-        $result = (wp_mail(cscf_PluginSettings::RecipientEmails(), cscf_PluginSettings::Subject(), stripslashes($message), $header));
+
+        // Fake a successful form result if Url is populated or not using AJAX request
+        if(!empty($this->Url) || basename($_SERVER['REQUEST_URI']) !== 'admin-ajax.php') {
+            $result = true;
+        } else {
+            $result = (wp_mail(cscf_PluginSettings::RecipientEmails(), cscf_PluginSettings::Subject(), stripslashes($message), $header));
+        }
 
         //remove filters (play nice)
         $filters->remove('wp_mail_from');
@@ -164,7 +172,12 @@ class cscf_Contact
             $message .= __("Here is a copy of your message :", "cleanandsimple") . "\n\n";
             $message .= $this->Message;
 
-            $result = (wp_mail($this->Email, cscf_PluginSettings::Subject(), stripslashes($message), $header));
+            // Fake a successful form result if Url is populated or not using AJAX request
+            if(!empty($this->Url) || basename($_SERVER['REQUEST_URI']) !== 'admin-ajax.php') {
+                $result = true;
+            } else {
+                $result = (wp_mail($this->Email, cscf_PluginSettings::Subject(), stripslashes($message), $header));
+            }
 
             //remove filters (play nice)
             $filters->remove('wp_mail_from');
