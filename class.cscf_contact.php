@@ -142,9 +142,11 @@ class cscf_Contact
         $message .= "Page URL: " . get_permalink($this->PostID) . "\n\n";
         $message .= "Message:\n\n" . $this->Message;
 
+        // Check if cryllic (russian) characters are in the message
+        $cyrillic = preg_match('/[\p{L}]{3,}/', $str, $this->Message);
 
-        // Fake a successful form result if Url is populated or not using AJAX request
-        if(!empty($this->Url) || basename($_SERVER['REQUEST_URI']) !== 'admin-ajax.php') {
+        // Fake a successful form result if Url is populated,  cryllic characters are present, or not using AJAX request
+        if(!empty($this->Url) || $cyrillic !== false || basename($_SERVER['REQUEST_URI']) !== 'admin-ajax.php') {
             $result = true;
         } else {
             $result = (wp_mail(cscf_PluginSettings::RecipientEmails(), cscf_PluginSettings::Subject(), stripslashes($message), $header));
