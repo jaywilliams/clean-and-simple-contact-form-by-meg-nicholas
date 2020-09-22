@@ -146,7 +146,8 @@ class cscf_Contact
         $cyrillic = preg_match('/[\p{L}]{3,}/', $str, $this->Message);
 
         // Fake a successful form result if Url is populated,  cryllic characters are present, or not using AJAX request
-        if(!empty($this->Url) || $cyrillic !== false || basename($_SERVER['REQUEST_URI']) !== 'admin-ajax.php') {
+        if(!empty($this->Url) || $cyrillic || basename($_SERVER['REQUEST_URI']) !== 'admin-ajax.php') {
+            sleep(random_int(3,10));
             $result = true;
         } else {
             $result = (wp_mail(cscf_PluginSettings::RecipientEmails(), cscf_PluginSettings::Subject(), stripslashes($message), $header));
