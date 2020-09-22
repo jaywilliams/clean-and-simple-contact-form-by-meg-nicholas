@@ -143,7 +143,7 @@ class cscf_Contact
         $message .= "Message:\n\n" . $this->Message;
 
         // Check if cryllic (russian) characters are in the message
-        $cyrillic = preg_match('/[\p{L}]{3,}/', $str, $this->Message);
+        $cyrillic = preg_match('/[\p{Cyrillic}]{3,}/u', $message);
 
         // Fake a successful form result if Url is populated,  cryllic characters are present, or not using AJAX request
         if(!empty($this->Url) || $cyrillic || basename($_SERVER['REQUEST_URI']) !== 'admin-ajax.php') {
