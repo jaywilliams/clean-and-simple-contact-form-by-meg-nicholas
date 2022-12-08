@@ -145,8 +145,11 @@ class cscf_Contact
         // Check if cryllic (russian) characters are in the message
         $cyrillic = preg_match('/[\p{Cyrillic}]{3,}/u', $message);
 
+        // Check if message contains ad-invested keywords
+        $spamwords = preg_match('/artificial\s+intelligence|\bai\b|copywriter/i', $message);
+
         // Fake a successful form result if Url is populated,  cryllic characters are present, or not using AJAX request
-        if(!empty($this->Url) || $cyrillic || basename($_SERVER['REQUEST_URI']) !== 'admin-ajax.php') {
+        if(!empty($this->Url) || $cyrillic || $spamwords || basename($_SERVER['REQUEST_URI']) !== 'admin-ajax.php') {
             sleep(random_int(3,10));
             $result = true;
         } else {
